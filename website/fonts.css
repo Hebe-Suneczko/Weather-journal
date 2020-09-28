@@ -1,0 +1,9 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(./Fonts/TTCommons-Regular.ttf);
+}
+
+@font-face {
+    font-family: myFirstFontBold;
+    src: url(./Fonts/TTCommons-Bold.ttf);
+}

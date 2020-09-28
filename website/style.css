@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    background: #fffff8;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+#app {
+    /* display: grid; */
+    /* grid-template-columns: 1fr;
+    grid-template-rows: 140px 110px 210px; */
+    /* grid-auto-rows: minmax(100px, auto); */
+    /* grid-template-columns:  */
+    height: 100vh;
+    width: 100vw;
+    background: url('./Images/bg.jpg');
+    background-size: cover;
+    justify-content: center;
+    grid-gap: 1em;
+    font-size: 20px;
+    font-family: myFirstFont;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    color: #E24429;
+}
+
+nav {
+    height: 140px;
+    width: 100%;
+}
+
+.logo {
+    position: absolute;
+    width: 91px;
+    height: 47px;
+    left: 61px;
+    top: 60px;
+}
+
+main {
+    max-width: 650px;
+    background: rgba(61, 56, 50, 0.5);
+    border-radius: 23px;
+    width: 100%;
+    height: 70%;
+    margin: auto;
+}
+
+.content_top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.feel {
+    display: flex;
+    flex-direction: column;
+}
+
+.zip {
+    padding-top: 28px;
+    padding-bottom: 21px;
+}
+
+.holder {}
+
+.entry {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 18%;
+}
+
+#entryHolder {}
+
+#date {
+    font-family: myFirstFont;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    color: #C4C4C4;
+    padding-bottom: 19px;
+}
+
+#temp {
+    font-family: myFirstFont;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+    padding-bottom: 19px;
+}
+
+#content {
+    overflow: hidden;
+    font-family: myFirstFont;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    color: #C4C4C4;
+    padding-bottom: 19px;
+}
+
+.headline {}
+
+.title {
+    font-family: myFirstFont;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+    margin-top: 40px;
+    margin-bottom: 19px;
+}
+
+
+/*  Basic Styling To Override Default For Basic HTML Elements */
+
+label {
+    display: block;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    line-height: 24px;
+    color: #E24429;
+}
+
+
+/* #feelings {
+    display: block;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    line-height: 24px;
+    color: #e20c0c;
+   
+} */
+
+.myInput {
+    padding-bottom: 40px;
+}
+
+input {
+    display: block;
+    width: 318px;
+    height: 50px;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    color: #666666;
+    font-family: myFirstFont;
+    background: #FFFFFF;
+    border: 1px solid #E24429;
+    box-sizing: border-box;
+    /* Drop-shadow */
+    box-shadow: 4px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+button {
+    font-family: myFirstFontBold;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+    width: 318px;
+    height: 50px;
+    background: #E24429;
+    /* Drop-shadow */
+    border-style: none;
+    box-shadow: 4px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    margin-top: 40px;
+}
+
+button:hover {
+    background: #fa583b;
+    border-style: none;
+}
+
+button:active {
+    background: #691809;
+    border-style: none;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+textarea {
+    width: 318px;
+    height: 73px;
+    font-family: myFirstFont;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    /* identical to box height, or 133% */
+    letter-spacing: 0.05em;
+    color: #666666;
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    /* Drop-shadow */
+    box-shadow: 4px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+/* Reset style for HTML element on active to have no border*/
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+
+/* Style for Placeholder Text*/
+
+::placeholder {
+    /* Firefox, Chrome, Opera */
+    color: #666666;
+    font-family: myFirstFont;
+    width: 318px;
+    height: 73px;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #666666;
+    font-family: myFirstFont;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #666666;
+    font-family: myFirstFont;
+}
+
+@media only screen and (min-width: 964px) {
+    nav {
+        height: 81px;
+    }
+}

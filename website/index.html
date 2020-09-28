@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Journal</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <nav class="holder headline">
+            <a class="logo" href="index.html"><img src="../website/Images/logo.png"></a>
+        </nav>
+
+        <main class="content_main">
+            <div class="content_top">
+                <div class="holder zip">
+                    <label for="zip">ZIP CODE</label>
+                    <input type="text" id="zip" placeholder="enter zip code here">
+                </div>
+                <div class="holder feel">
+                    <label for="feelings">How are you feeling today?</label>
+                    <textarea class="myInput" id="feelings" placeholder="Enter your feelings here"></textarea>
+                    <button id="generate" type="submit"> Search </button>
+                </div>
+            </div>
+            <div class="holder entry">
+                <div class="title">Current Weather in Wilmington , US</div>
+                <div id="entryHolder">
+
+                    <div id="date">27 Sep 2020</div>
+                    <div id="temp">74 °F</div>
+                    <div id="content">
+                        <ul>
+                            <li> Humidity 78 %</li>
+                            <li> Cloudiness overcast clouds</li>
+                            <li> Sunrise 10:54:47 GMT</li>
+                            <li> Sunset 22:50:50 GMT</li>
+                            <li> Wind Speed 4.7 mi/h</li>
+                            <li> Your Feelings</li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+    <script src="app.js" type="text/javascript"></script>
+
+</body>
+
+</html>
