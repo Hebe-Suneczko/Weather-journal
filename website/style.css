@@ -140,7 +140,14 @@ label {
     font-size: 16px;
     letter-spacing: 0.05em;
     line-height: 24px;
+}
+
+.label_zip {
     color: #E24429;
+}
+
+.label_feel {
+    color: #C4C4C4;
 }
 
 
@@ -172,6 +179,7 @@ input {
     /* Drop-shadow */
     box-shadow: 4px 10px 20px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    padding-left: 8px;
 }
 
 button {
@@ -224,6 +232,8 @@ textarea {
     box-shadow: 4px 10px 20px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     overflow: hidden;
+    padding-left: 8px;
+    padding-top: 8px;
 }
 
 
