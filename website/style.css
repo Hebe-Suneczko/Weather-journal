@@ -14,11 +14,6 @@ body {
 }
 
 #app {
-    /* display: grid; */
-    /* grid-template-columns: 1fr;
-    grid-template-rows: 140px 110px 210px; */
-    /* grid-auto-rows: minmax(100px, auto); */
-    /* grid-template-columns:  */
     height: 100vh;
     width: 100vw;
     background: url('./Images/bg.jpg');
@@ -33,6 +28,7 @@ body {
     line-height: 24px;
     letter-spacing: 0.05em;
     color: #E24429;
+    animation: breath 30s ease-in-out infinite;
 }
 
 nav {
@@ -150,16 +146,6 @@ label {
     color: #C4C4C4;
 }
 
-
-/* #feelings {
-    display: block;
-    font-size: 16px;
-    letter-spacing: 0.05em;
-    line-height: 24px;
-    color: #e20c0c;
-   
-} */
-
 .myInput {
     padding-bottom: 40px;
 }
@@ -272,5 +258,16 @@ button:focus {
 @media only screen and (min-width: 964px) {
     nav {
         height: 81px;
+    }
+    @keyframes breath {
+        0% {
+            background-size: 100% auto;
+        }
+        50% {
+            background-size: 105% auto;
+        }
+        100% {
+            background-size: 100% auto;
+        }
     }
 }
