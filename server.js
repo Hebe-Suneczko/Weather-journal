@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = {};
+projectData = [];
 
 // Require Express to run server and routes
 const express = require('express');
@@ -26,16 +26,12 @@ app.use(express.static('website'));
 const port = 3000;
 
 /* Spin up the server*/
-const server = app.listen(port, listening);
+const server = app.listen(port, '192.168.1.80', listening);
 
 function listening() {
     // console.log(server);
     console.log(`running on http://localhost:${port}`);
 };
-
-
-
-
 
 // GET route
 app.get('/api/entry', sendData);
@@ -51,17 +47,18 @@ app.post('/api/entry', callBack);
 function callBack(req, res) {
     const postData = req.body;
 
-    projectData.temp = postData.temp;
-    projectData.country = postData.country;
-    projectData.place = postData.place;
-    projectData.userResponse = postData.userResponse;
-    projectData.sunrise = postData.sunrise;
-    projectData.sunset = postData.sunset;
-    projectData.windspeed = postData.windspeed;
-    projectData.date = postData.date;
-    projectData.humidity = postData.humidity;
-    projectData.cloudiness = postData.cloudiness;
+    const newData = {};
+    newData.temp = postData.temp;
+    newData.country = postData.country;
+    newData.place = postData.place;
+    newData.userResponse = postData.userResponse;
+    newData.sunrise = postData.sunrise;
+    newData.sunset = postData.sunset;
+    newData.windspeed = postData.windspeed;
+    newData.date = postData.date;
+    newData.humidity = postData.humidity;
+    newData.cloudiness = postData.cloudiness;
 
-
-    res.send(projectData);
+    projectData.push(newData);
+    res.send(newData);
 };

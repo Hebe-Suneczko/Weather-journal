@@ -19,47 +19,14 @@ const getWeatherData = async(zipCode) => {
         return allData;
     } catch (error) {
         console.log("error", error);
+        showMessage("OpenWeatherMap error, sorry");
         return null;
         // appropriately handle the error
     }
 };
 
-
-
-/* Event Listener for generate button */
-document.querySelector("#generate").addEventListener("click", () => {
-    const zipCode = document.querySelector('#zip').value.trim();
-    const feelings = document.querySelector('#feelings').value;
-    getWeatherData(zipCode)
-        .then(weatherData => {
-            // console.log(weatherData);
-            postData("/api/entry", {
-                place: weatherData.name,
-                date: today,
-                country: weatherData.sys.country,
-                cloudiness: weatherData.weather[0].description,
-                //nearest integer
-                humidity: `${Math.round(weatherData.main.humidity)} %`,
-                windspeed: `${weatherData.wind.speed} mi/h`,
-                temp: `${Math.round(weatherData.main.temp)} °F`,
-                sunrise: UTC(weatherData.sys.sunrise),
-                sunset: UTC(weatherData.sys.sunset),
-                userResponse: feelings
-            }).then(
-                retrieveData("/api/entry")
-            )
-        })
-
-});
-
-const UTC = (unixTime) => {
-    const time = new Date(unixTime * 1000);
-    return `${time.toUTCString().slice(17, 25)} GMT`;
-}
-
 // Async POST
 const postData = async(url = '', data = { temp, date, userResponse }) => {
-
     const response = await fetch(url, {
         method: 'POST',
         credentials: 'same-origin',
@@ -73,9 +40,60 @@ const postData = async(url = '', data = { temp, date, userResponse }) => {
         const newData = await response.json();
         return newData;
     } catch (error) {
+        showMessage("Error on server, sorry! Please try again later");
         console.log("error", error);
     }
 };
+
+const generateData = () => {
+    const zipCode = document.querySelector('#zip').value.trim();
+    const feelings = document.querySelector('#feelings').value;
+    getWeatherData(zipCode)
+        .then(weatherData => {
+            if (weatherData == null) {
+                return null;
+            }
+
+            if (weatherData.cod != 200) {
+                showMessage("Wrong zip code, please check");
+            } else {
+                postData("/api/entry", weatherApiToServer(weatherData, feelings))
+                    .then(retrieveData("/api/entry"))
+            }
+        })
+}
+
+const weatherApiToServer = (weatherData, feelings) => {
+    return {
+        place: weatherData.name,
+        date: today,
+        country: weatherData.sys.country,
+        cloudiness: weatherData.weather[0].description,
+        //nearest integer
+        humidity: `${Math.round(weatherData.main.humidity)} %`,
+        windspeed: `${weatherData.wind.speed} mi/h`,
+        temp: `${Math.round(weatherData.main.temp)} °F`,
+        sunrise: UTC(weatherData.sys.sunrise),
+        sunset: UTC(weatherData.sys.sunset),
+        userResponse: feelings
+    }
+}
+
+const showMessage = (message) => {
+    document.querySelector("#message").innerHTML = message;
+    document.querySelector("#message").classList.remove("hidden");
+    document.querySelector("#weather-holder").classList.add("hidden");
+}
+
+document.getElementById('get-weather').addEventListener('submit', (event) => {
+    event.preventDefault();
+    generateData();
+});
+
+const UTC = (unixTime) => {
+    const time = new Date(unixTime * 1000);
+    return `${time.toUTCString().slice(17, 25)} GMT`;
+}
 
 
 // Function to GET Project Data
@@ -90,13 +108,15 @@ const retrieveData = async(url = '') => {
 
     } catch (error) {
         console.log("error", error);
+        showMessage("Error on server, sorry! Please try again later");
         // appropriately handle the error
     }
 
 };
 
 /* Update danamic UI */
-const updateUI = (weatherData) => {
+const updateUI = (allWeatherData) => {
+    let weatherData = allWeatherData[allWeatherData.length - 1];
     const location = `${weatherData.place}, ${weatherData.country}`
     document.querySelector(".location").innerHTML = location;
     document.querySelector("#date").innerHTML = weatherData.date;
@@ -108,5 +128,6 @@ const updateUI = (weatherData) => {
     document.querySelector(".windspeed").innerHTML = weatherData.windspeed;
     document.querySelector(".user_respones").innerHTML = weatherData.userResponse;
     //after we populated the UI, we unhide the div with 
+    document.querySelector("#message").classList.add("hidden");
     document.querySelector("#weather-holder").classList.remove("hidden");
 }
