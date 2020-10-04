@@ -15,7 +15,7 @@ const getWeatherData = async(zipCode) => {
     try {
         // Transform into JSON
         const allData = await request.json()
-        console.log(allData);
+            // console.log(allData);
         return allData;
     } catch (error) {
         console.log("error", error);
@@ -32,7 +32,7 @@ document.querySelector("#generate").addEventListener("click", () => {
     const feelings = document.querySelector('#feelings').value;
     getWeatherData(zipCode)
         .then(weatherData => {
-            console.log(weatherData);
+            // console.log(weatherData);
             postData("/api/entry", {
                 place: weatherData.name,
                 date: today,
@@ -107,4 +107,6 @@ const updateUI = (weatherData) => {
     document.querySelector(".sunset").innerHTML = weatherData.sunset;
     document.querySelector(".windspeed").innerHTML = weatherData.windspeed;
     document.querySelector(".user_respones").innerHTML = weatherData.userResponse;
+    //after we populated the UI, we unhide the div with 
+    document.querySelector("#weather-holder").classList.remove("hidden");
 }

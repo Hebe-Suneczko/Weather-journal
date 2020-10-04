@@ -44,6 +44,10 @@ nav {
     top: 60px;
 }
 
+.hidden {
+    display: none !important;
+}
+
 main {
     max-width: 650px;
     background: rgba(61, 56, 50, 0.5);
