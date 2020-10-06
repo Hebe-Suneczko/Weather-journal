@@ -73,8 +73,6 @@ main {
     padding-bottom: 21px;
 }
 
-.holder {}
-
 .entry {
     display: flex;
     flex-direction: column;
